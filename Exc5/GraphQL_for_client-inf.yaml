@@ -1,0 +1,34 @@
+# Определение сущностей
+
+type Client {
+  id: ID!
+  name: String!
+  age: Int!
+  documents: [Document!]!
+  relatives: [Relative!]!
+}
+
+type Document {
+  id: ID!
+  type: String!
+  number: String!
+  issueDate: String!
+  expiryDate: String!
+}
+
+type Relative {
+  id: ID!
+  relationType: String!
+  name: String!
+  age: Int!
+}
+
+# Определение запросов
+
+type Query {
+  client(id: ID!): Client
+  clientsDocuments(id: ID!): [Document!]!
+  clientsRelatives(id: ID!): [Relative!]!
+}
+
+# В результате, получаем возможность получения аггрегированных данных в одном объединенном запросе, при чем только тех данных, которые необходимы.
